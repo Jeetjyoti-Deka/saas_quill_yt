@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { trpc } from "../_trpc/client";
 import { Loader2 } from "lucide-react";
+import { Suspense } from "react";
 
 const AuthCallback = () => {
   const router = useRouter();
@@ -34,4 +35,13 @@ const AuthCallback = () => {
     </div>
   );
 };
-export default AuthCallback;
+
+const AuthCallbackSuspense = () => {
+  return (
+    <Suspense>
+      <AuthCallback />
+    </Suspense>
+  );
+};
+
+export default AuthCallbackSuspense;
