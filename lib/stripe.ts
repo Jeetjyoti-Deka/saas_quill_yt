@@ -3,14 +3,10 @@ import { db } from "@/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Stripe from "stripe";
 
-export const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY ??
-    "sk_test_51Og86kSEyz5xR4RTFJtPIGp2ENPivvi8HfHUvyYNYG07ggCwFWXSsQoD9FDIwIK3II3FrmzQ3f8sOOeuZw2MnD3100DUhnSeBV",
-  {
-    // apiVersion: "2024-04-10",
-    typescript: true,
-  }
-);
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
+  // apiVersion: "2024-04-10",
+  typescript: true,
+});
 
 export async function getUserSubscriptionPlan() {
   const { getUser } = getKindeServerSession();
